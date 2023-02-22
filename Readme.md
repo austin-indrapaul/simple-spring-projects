@@ -1,2 +1,2 @@
 
-![My Image](my-image.jpg)
+![My Image](uml.jpg)
