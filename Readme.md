@@ -6,12 +6,12 @@ INPUT & OUTPUT
 - [GET] http://localhost:8080/api
 
     *Public URL - Welcome message*
-    <br />
+    ##
     
 - [GET] http://localhost:8080/api/student/1
 
     *Get details of student with id 1*
-    <br />
+    ##
     
 - [GET] http://localhost:8080/api/students
 - [POST] http://localhost:8080/api/student
