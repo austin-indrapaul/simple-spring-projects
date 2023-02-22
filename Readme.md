@@ -4,9 +4,11 @@ INPUT & OUTPUT
 **END POINTS**
 
 - [GET] http://localhost:8080/api
+    
     Public URL - Welcome message
     
 - [GET] http://localhost:8080/api/student/1
+    
     Get details of student with id 1
 
 - [GET] http://localhost:8080/api/students
