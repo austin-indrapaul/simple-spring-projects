@@ -23,7 +23,7 @@ INPUT & OUTPUT
    *Add a new student*
     
     
-    In Request body, use below sample object.
+    In Request body - sample input object.
     
        {
           "name": "Zacky",
