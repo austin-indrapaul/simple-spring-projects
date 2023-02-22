@@ -1,14 +1,14 @@
-Will become a heading
+INPUT & OUTPUT
 ==============
 
-Will become a sub heading
-==============
+**END POINTS**
 
-*This will be Italic*
+- [GET] http://localhost:8080/api
+- [GET] http://localhost:8080/api/student/1
+- [GET] http://localhost:8080/api/students
+- [POST] http://localhost:8080/api/student
+- [PUT] http://localhost:8080/api/student/1
+- [DELETE] http://localhost:8080/api/student/1
+- [POST] http://localhost:8080/api/student/1/add-course
+- [GET] http://localhost:8080/api/student/1/remove-course/2
 
-**This will be Bold**
-
-- This will be a list item
-- This will be a list item
-
-    Add a indent and this will end up as code
