@@ -43,13 +43,48 @@ INPUT & OUTPUT
               }
             ]
         }
-    
-     
-      
      ##
 
 - [PUT] http://localhost:8080/api/student/1
+
+   *Update a student* 
+    
+    In Request body - sample input object.
+    
+       {
+          "name": "Zack",
+          "age": 21,
+          "username": "zach",
+          "password": "123",
+          "address": {
+              "house_no": "ZX35F",
+              "street": "Marshal st",
+              "city": "NYC",
+              "pincode": "NY004"
+          }
+        }
+     ##
+
+
 - [DELETE] http://localhost:8080/api/student/1
+
+   *Delete the student with id 1*
+    ##
+
 - [POST] http://localhost:8080/api/student/1/add-course
+
+   *Add a course to the student with id 1* 
+    
+    In Request body - sample input object.
+    
+       {
+         "course_name": "Java",
+         "course_duration": "340 mins"
+       }
+     ##
+
 - [GET] http://localhost:8080/api/student/1/remove-course/2
+
+   *Remove the course with id 1 from the student with id 1*
+    ##
 
