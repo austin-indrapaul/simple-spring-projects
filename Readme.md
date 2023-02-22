@@ -31,24 +31,28 @@ INPUT & OUTPUT
           <td><b style="font-size:30px">Output</b></td>
        </tr>
        <tr>
-          <td> {
-          "name": "Zacky",
-          "age": 21,
-          "username": "zachy",
-          "password": "123",
-          "address": {
-              "house_no": "ZX35F",
-              "street": "Marshal st",
-              "city": "NYC",
-              "pincode": "NY004"
-          },
-          "courses": [
-              {
-                  "course_name": "Communication - English",
-                  "course_duration": "120 mins"
-              }
-          ]
-      }</td>
+          <td>
+             <code>
+                {
+                   "name": "Zacky",
+                   "age": 21,
+                   "username": "zachy",
+                   "password": "123",
+                   "address": {
+                       "house_no": "ZX35F",
+                       "street": "Marshal st",
+                       "city": "NYC",
+                       "pincode": "NY004"
+                   },
+                   "courses": [
+                       {
+                           "course_name": "Communication - English",
+                           "course_duration": "120 mins"
+                       }
+                   ]
+               }
+             </code>  
+          </td>
           <td> {
           "name": "Zacky",
           "age": 21,
