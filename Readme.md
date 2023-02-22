@@ -14,12 +14,14 @@ INPUT & OUTPUT
     ##
     
 - [GET] http://localhost:8080/api/students
+ 
    *Get details of student with id 1*
     ##
 
 - [POST] http://localhost:8080/api/student
+
    *Add a new student*
-    ##
+    
     
     In Request body, use below sample object.
     
@@ -41,6 +43,8 @@ INPUT & OUTPUT
               }
           ]
       }
+      
+     ##
 
 - [PUT] http://localhost:8080/api/student/1
 - [DELETE] http://localhost:8080/api/student/1
