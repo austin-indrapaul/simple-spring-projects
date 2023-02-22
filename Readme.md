@@ -25,7 +25,13 @@ INPUT & OUTPUT
     
     In Request body, use below sample object.
     
-      {
+    <table border="0">
+       <tr>
+          <td><b style="font-size:30px">Input</b></td>
+          <td><b style="font-size:30px">Output</b></td>
+       </tr>
+       <tr>
+          <td> {
           "name": "Zacky",
           "age": 21,
           "username": "zachy",
@@ -42,7 +48,29 @@ INPUT & OUTPUT
                   "course_duration": "120 mins"
               }
           ]
-      }
+      }</td>
+          <td> {
+          "name": "Zacky",
+          "age": 21,
+          "username": "zachy",
+          "password": "123",
+          "address": {
+              "house_no": "ZX35F",
+              "street": "Marshal st",
+              "city": "NYC",
+              "pincode": "NY004"
+          },
+          "courses": [
+              {
+                  "course_name": "Communication - English",
+                  "course_duration": "120 mins"
+              }
+          ]
+      }</td>
+       </tr>
+   </table>
+    
+     
       
      ##
 
