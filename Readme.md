@@ -85,6 +85,6 @@ INPUT & OUTPUT
 
 - [GET] http://localhost:8080/api/student/1/remove-course/2
 
-   *Remove the course with id 1 from the student with id 1*
+   *Remove the course with id 2 from the student with id 1*
     ##
 
