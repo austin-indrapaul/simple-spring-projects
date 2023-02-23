@@ -57,7 +57,7 @@ public class StudentController {
 		return studentService.deleteStudent(student_id);
 	}
 
-	@GetMapping("/student/{student_id}/add-course")
+	@PostMapping("/student/{student_id}/add-course")
 	public ResponseEntity addCourse(@PathVariable int student_id, @RequestBody Course course) {
 		return studentService.addCourse(student_id, course);
 	}
