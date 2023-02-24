@@ -1,6 +1,8 @@
 INPUT & OUTPUT
 ==============
 
+**CREDENTIALS** john - 123
+
 **END POINTS**
 
 - [GET] http://localhost:8080/api
