@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -21,11 +22,8 @@ public class SecurityConfigs {
 
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-		http.authorizeRequests().requestMatchers("/login", "/api", "/h2-console", "/h2-console/**").permitAll().and()
-				.authorizeRequests().anyRequest().authenticated().and().formLogin().and().httpBasic();
-
-//		http.authorizeRequests().requestMatchers("/h2-console/**").permitAll().and().csrf()
-//				.ignoringRequestMatchers("/h2-console/**").and().headers().frameOptions().sameOrigin();
+		http.authorizeHttpRequests().requestMatchers("/login", "/api").permitAll().and().authorizeHttpRequests()
+				.anyRequest().authenticated().and().formLogin().and().httpBasic();
 
 		http.csrf().disable();
 		http.headers().frameOptions().disable();
@@ -35,7 +33,7 @@ public class SecurityConfigs {
 
 	@Bean
 	public WebSecurityCustomizer webSecurityCustomizer() {
-		return (web) -> web.ignoring().requestMatchers("/h2-console", "/h2-console/**");
+		return (web) -> web.ignoring().requestMatchers(new AntPathRequestMatcher("/h2-console/**"));
 	}
 
 	@Bean
