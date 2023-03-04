@@ -4,47 +4,59 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfigs {
-
+public class SecurityConfigs extends WebSecurityConfigurerAdapter {
 	@Autowired
 	MyUserDetailsService userDetailsService;
 
-	@Bean
-	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-		http.authorizeHttpRequests().requestMatchers("/login", "/api").permitAll().and().authorizeHttpRequests()
-				.anyRequest().authenticated().and().formLogin().and().httpBasic();
+	@Autowired
+	private JwtRequestFilter jwtRequestFilter;
 
-		http.csrf().disable();
-		http.headers().frameOptions().disable();
+	@Override
+	protected void configure(HttpSecurity httpSecurity) throws Exception {
 
-		return http.build();
+		httpSecurity.csrf().disable();
+
+		httpSecurity.authorizeRequests().antMatchers("/error", "/authenticate").permitAll();
+
+		httpSecurity.authorizeRequests().antMatchers("/", "/home", "/dashboard").permitAll().anyRequest()
+				.authenticated().and().formLogin().and().httpBasic();
+
+		httpSecurity.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+
+		httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+
+	}
+
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		auth.userDetailsService(userDetailsService);
 	}
 
 	@Bean
-	public WebSecurityCustomizer webSecurityCustomizer() {
-		return (web) -> web.ignoring().requestMatchers(new AntPathRequestMatcher("/h2-console/**"));
-	}
-
-	@Bean
-	public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration)
-			throws Exception {
-		return authenticationConfiguration.getAuthenticationManager();
-	}
-
-	@Bean
-	public PasswordEncoder passwordEncoder() {
+	public PasswordEncoder name() {
 		return NoOpPasswordEncoder.getInstance();
 	}
 
+	@Bean
+	public AuthenticationManager authenticationManagerBean() throws Exception {
+		return super.authenticationManagerBean();
+	}
+
+	// For h2-console to work
+	@Override
+	public void configure(WebSecurity web) throws Exception {
+		web.ignoring().antMatchers("/h2-console/**");
+	}
 }
